@@ -28,7 +28,7 @@ const products = [
   {
     id: 3,
     name: "Summer Floral Dress",
-    price: 79.99,
+    price: 220,
     image: "/images/man-tshirt.jpg",
     category: "women",
     isNew: true,

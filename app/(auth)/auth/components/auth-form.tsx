@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import {
   Eye,
   EyeOff,
+  Github,
   Lock,
   Mail,
   ShoppingBag,
@@ -160,6 +161,19 @@ export default function AuthForm() {
     }
   }
 
+  async function handleGitHubSignIn() {
+    try {
+      const result = await signIn("github", { redirect: true });
+      if (result?.error) {
+        toast.error(result.error);
+      } else {
+        router.push("/dashboard");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to sign in with GitHub");
+    }
+  }
   return (
     <Tabs defaultValue="signin" className="w-full">
       <TabsList className="grid w-full grid-cols-2 mb-6 bg-gray-100">
@@ -267,6 +281,26 @@ export default function AuthForm() {
               Forgot your password?
             </Button>
           </CardFooter>
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-gray-200" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-white px-2 text-gray-500">
+                Or continue with
+              </span>
+            </div>
+          </div>
+
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full border-gray-200 bg-white text-black hover:bg-gray-50 hover:text-black"
+            onClick={handleGitHubSignIn}
+          >
+            <Github className="mr-2 h-4 w-4" />
+            Sign in with GitHub
+          </Button>
         </Card>
       </TabsContent>
 

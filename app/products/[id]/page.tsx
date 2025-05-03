@@ -81,7 +81,7 @@ const products: Product[] = [
   {
     id: 3,
     name: "Summer Floral Dress",
-    price: 79.99,
+    price: 80.2,
     image: "/images/man-tshirt.jpg",
     category: "women",
     isNew: true,
