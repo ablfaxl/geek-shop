@@ -154,3 +154,74 @@
 .animate-upDown {
   animation: upDown 1s ease-in-out infinite;
 }
+
+/* Sidebar animation overrides */
+[data-sidebar="sidebar"] {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-sidebar="menu-button"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-sidebar="menu-button"]:hover {
+  transform: translateX(4px);
+}
+
+[data-sidebar="trigger"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-sidebar="trigger"]:hover {
+  transform: rotate(180deg);
+}
+
+/* Smooth sidebar collapse animation */
+.group\/sidebar-wrapper {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhance the rail interaction */
+[data-sidebar="rail"] {
+  transition: all 0.3s ease;
+}
+
+[data-sidebar="rail"]:hover::after {
+  background-color: hsl(var(--primary)) !important;
+  opacity: 0.5;
+}
+
+/* Animation for menu items */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+[data-sidebar="menu-button"] {
+  animation: slideIn 0.3s ease-out forwards;
+  animation-delay: calc(var(--animation-order, 0) * 0.05s);
+}
+
+/* Stagger the menu items */
+[data-sidebar="menu-item"]:nth-child(1) [data-sidebar="menu-button"] {
+  --animation-order: 1;
+}
+[data-sidebar="menu-item"]:nth-child(2) [data-sidebar="menu-button"] {
+  --animation-order: 2;
+}
+[data-sidebar="menu-item"]:nth-child(3) [data-sidebar="menu-button"] {
+  --animation-order: 3;
+}
+[data-sidebar="menu-item"]:nth-child(4) [data-sidebar="menu-button"] {
+  --animation-order: 4;
+}
+[data-sidebar="menu-item"]:nth-child(5) [data-sidebar="menu-button"] {
+  --animation-order: 5;
+}
