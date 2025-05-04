@@ -14,7 +14,6 @@ A Next.js application designed for Shopify integrations with various functionali
 - [Dependencies](#dependencies)
 - [Development](#development)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
@@ -35,18 +34,18 @@ Before running the application, ensure your `.env` file is set up correctly. Ref
 
 ### Available Scripts
 
-| Script         | Description                                           |
-|----------------|-------------------------------------------------------|
-| `dev`          | Start the development server with Turbopack         |
-| `db:run`      | Run the database with Docker Compose                  |
-| `build`       | Build the application for production                   |
-| `start`       | Start the production server                           |
-| `lint`        | Run ESLint to check for code quality                 |
-| `format`      | Format code using Prettier                           |
-| `migrate`     | Run database migrations with Prisma                   |
-| `generate`    | Generate the Prisma Client                            |
-| `seed`        | Execute the seed script to populate the database      |
-| `db:studio`   | Open Prisma Studio                                   |
+| Script      | Description                                      |
+|-------------|--------------------------------------------------|
+| `dev`       | Start the development server with Turbopack      |
+| `db:run`    | Run the database with Docker Compose             |
+| `build`     | Build the application for production             |
+| `start`     | Start the production server                      |
+| `lint`      | Run ESLint to check for code quality             |
+| `format`    | Format code using Prettier                       |
+| `migrate`   | Run database migrations with Prisma              |
+| `generate`  | Generate the Prisma Client                       |
+| `seed`      | Execute the seed script to populate the database |
+| `db:studio` | Open Prisma Studio                               |
 
 ## Dependencies
 
@@ -80,3 +79,6 @@ Contributions are welcome! Please follow these steps to contribute:
 5. Open a pull request.
 
 ---
+
+![Screenshot](public/geek-shop.png)
+![dashboard](public/dashboard.png)
