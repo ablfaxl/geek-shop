@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { SessionProvider as SProvider } from "next-auth/react";
+import { SessionProvider as SProvider } from 'next-auth/react';
 export default function SessionProvider({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return <SProvider>{children}</SProvider>;
+	return <SProvider>{children}</SProvider>;
 }

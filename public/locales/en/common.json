@@ -1,11 +1,11 @@
 {
-  "header": {
-    "title": "Welcome to My App",
-    "home": "Home",
-    "about": "About"
-  },
-  "button": {
-    "login": "Log In",
-    "signup": "Sign Up"
-  }
+	"header": {
+		"title": "Welcome to My App",
+		"home": "Home",
+		"about": "About"
+	},
+	"button": {
+		"login": "Log In",
+		"signup": "Sign Up"
+	}
 }
