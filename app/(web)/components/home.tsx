@@ -3,9 +3,9 @@ import { ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { HeroSection } from '@/components/hero-section';
 import { CategorySection } from '@/components/category-section';
-import { FeaturedProducts } from '@/app/(home)/products/components/featured-products';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { FeaturedProducts } from '@/app/(web)/products/components/featured-products';
 
 export default function HomeComponent() {
 	return (

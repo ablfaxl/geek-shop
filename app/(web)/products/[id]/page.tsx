@@ -1,139 +1,44 @@
 'use client';
 
-import { useCart } from '@/app/(home)/cart/context/cart-provider';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronRight, Minus, Plus, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-
-interface Product {
-	id: number;
-	name: string;
-	price: number;
-	image: string;
-	category: string;
-	isNew: boolean;
-	description: string;
-	details: {
-		material: string;
-		fit: string;
-		care: string;
-		origin: string;
-	};
-	sizes: string[];
-	colors: string[];
-	images: string[];
-}
-
-// Mock product data - in a real app, you would fetch this from an API
-const products: Product[] = [
-	{
-		id: 1,
-		name: 'Classic White T-Shirt',
-		price: 29.99,
-		image: '/images/man-tshirt.jpg',
-		category: 'men',
-		isNew: true,
-		description:
-			'A timeless classic white t-shirt made from 100% organic cotton. Features a comfortable fit and durable construction that will last through countless washes.',
-		details: {
-			material: '100% Organic Cotton',
-			fit: 'Regular',
-			care: 'Machine wash cold, tumble dry low',
-			origin: 'Ethically made in Portugal',
-		},
-		sizes: ['XS', 'S', 'M', 'L', 'XL'],
-		colors: ['White', 'Black', 'Gray'],
-		images: [
-			'https://placehold.co/600x400',
-			'https://placehold.co/600x400',
-			'https://placehold.co/600x400',
-		],
-	},
-	{
-		id: 2,
-		name: 'Slim Fit Jeans',
-		price: 59.99,
-		image: '/images/man.jpg',
-		category: 'men',
-		isNew: false,
-		description:
-			'Modern slim fit jeans with a slight stretch for comfort. Features a classic five-pocket design and a versatile mid-wash that pairs well with anything.',
-		details: {
-			material: '98% Cotton, 2% Elastane',
-			fit: 'Slim',
-			care: 'Machine wash cold, inside out',
-			origin: 'Made in Turkey',
-		},
-		sizes: ['28', '30', '32', '34', '36'],
-		colors: ['Blue', 'Black', 'Gray'],
-		images: [
-			'https://placehold.co/600x400',
-			'https://placehold.co/600x400',
-			'https://placehold.co/600x400',
-		],
-	},
-	{
-		id: 3,
-		name: 'Summer Floral Dress',
-		price: 80.2,
-		image: '/images/man-tshirt.jpg',
-		category: 'women',
-		isNew: true,
-		description:
-			'A lightweight floral dress perfect for summer days. Features a flattering silhouette with a flowy skirt and adjustable straps.',
-		details: {
-			material: '100% Viscose',
-			fit: 'Regular',
-			care: 'Hand wash cold, line dry',
-			origin: 'Made in India',
-		},
-		sizes: ['XS', 'S', 'M', 'L', 'XL'],
-		colors: ['Floral Print', 'Blue', 'White'],
-		images: [
-			'https://placehold.co/600x400',
-			'https://placehold.co/600x400',
-			'https://placehold.co/600x400',
-		],
-	},
-	{
-		id: 4,
-		name: 'Casual Hoodie',
-		price: 49.99,
-
-		image: '/images/man-tshirt.jpg',
-
-		category: 'men',
-		isNew: false,
-		description:
-			'A comfortable casual hoodie perfect for everyday wear. Features a soft fleece lining and a relaxed fit for maximum comfort.',
-		details: {
-			material: '80% Cotton, 20% Polyester',
-			fit: 'Relaxed',
-			care: 'Machine wash cold, tumble dry low',
-			origin: 'Made in Vietnam',
-		},
-		sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-		colors: ['Gray', 'Black', 'Navy'],
-		images: [
-			'https://placehold.co/600x400',
-			'https://placehold.co/600x400',
-			'https://placehold.co/600x400',
-		],
-	},
-];
+import { Product } from '@/types/product.interface';
+import { useCart } from '@/app/(web)/cart/context/cart-provider';
 
 export default function ProductPage() {
 	const params = useParams();
 	const id = params.id as string;
-	const productId = Number.parseInt(id);
+	const [product, setProduct] = useState<Product>();
 
-	const product = products.find((p) => p.id === productId);
+	useEffect(() => {
+
+		const fetchProduct = async () => {
+			try {
+				const response = await fetch(`/api/products/${id}`);
+				if (!response.ok) return   toast.error(`Failed to fetch product: ${response.statusText}`);
+
+				let product;
+				try {
+					product = await response.json();
+				} catch (jsonError) {
+					toast.error('Invalid JSON response');
+				}
+
+				setProduct(product);
+			} catch (error) {
+				console.error(error);
+				toast.error('Failed to load product');
+			}
+		};
+
+		fetchProduct();
+	}, [id]);
 
 	const [quantity, setQuantity] = useState(1);
 	const [selectedSize, setSelectedSize] = useState('');
@@ -155,8 +60,6 @@ export default function ProductPage() {
 	}
 
 	const handleAddToCart = () => {
-		if (!selectedSize || !selectedColor) return;
-
 		addToCart({
 			...product,
 			quantity,
@@ -167,7 +70,7 @@ export default function ProductPage() {
 	return (
 		<div className="container px-4 py-12 mx-auto">
 			<div className="flex items-center gap-1 text-sm text-muted-foreground mb-8">
-				<Link href="/public" className="hover:text-foreground">
+				<Link href="/" className="hover:text-foreground">
 					Home
 				</Link>
 				<ChevronRight className="h-4 w-4" />
@@ -183,18 +86,16 @@ export default function ProductPage() {
 					<div className="relative aspect-square overflow-hidden rounded-lg border">
 						<Image
 							unoptimized
-							src={product.images[selectedImage] || '/placeholder.svg'}
+							src={product?.image?.toString() || '/placeholder.svg'}
 							alt={product.name}
 							fill
 							className="object-cover"
 						/>
-						{product.isNew && (
-							<Badge className="absolute top-4 right-4">New</Badge>
-						)}
+
 					</div>
 
 					<div className="flex gap-4">
-						{product.images.map((image, index) => (
+						{Array.from({ length: 1 }).map((_, index) => (
 							<button
 								key={index}
 								className={`relative aspect-square w-20 overflow-hidden rounded-md border ${
@@ -204,7 +105,7 @@ export default function ProductPage() {
 							>
 								<Image
 									unoptimized
-									src={image || '/placeholder.svg'}
+									src={product?.image?.toString() || '/placeholder.svg'}
 									alt={`${product.name} - Image ${index + 1}`}
 									fill
 									className="object-cover"
@@ -228,7 +129,7 @@ export default function ProductPage() {
 						<div>
 							<h3 className="font-medium mb-2">Size</h3>
 							<div className="flex flex-wrap gap-2">
-								{product.sizes.map((size) => (
+								{product?.sizes && product.sizes.map((size) => (
 									<Button
 										key={size}
 										variant={selectedSize === size ? 'default' : 'outline'}
@@ -249,7 +150,7 @@ export default function ProductPage() {
 						<div>
 							<h3 className="font-medium mb-2">Color</h3>
 							<div className="flex flex-wrap gap-2">
-								{product.colors.map((color) => (
+								{product.colors && product?.colors.map((color) => (
 									<Button
 										key={color}
 										variant={selectedColor === color ? 'default' : 'outline'}
@@ -292,7 +193,6 @@ export default function ProductPage() {
 					<Button
 						size="lg"
 						className="w-full"
-						disabled={!selectedSize || !selectedColor}
 						onClick={handleAddToCart}
 					>
 						<ShoppingCart className="h-5 w-5 mr-2" />
@@ -313,27 +213,10 @@ export default function ProductPage() {
 								<div>
 									<h4 className="font-medium">Material</h4>
 									<p className="text-sm text-muted-foreground">
-										{product.details.material}
+										{product.description}
 									</p>
 								</div>
-								<div>
-									<h4 className="font-medium">Fit</h4>
-									<p className="text-sm text-muted-foreground">
-										{product.details.fit}
-									</p>
-								</div>
-								<div>
-									<h4 className="font-medium">Care</h4>
-									<p className="text-sm text-muted-foreground">
-										{product.details.care}
-									</p>
-								</div>
-								<div>
-									<h4 className="font-medium">Origin</h4>
-									<p className="text-sm text-muted-foreground">
-										{product.details.origin}
-									</p>
-								</div>
+
 							</div>
 						</TabsContent>
 						<TabsContent value="shipping" className="space-y-4 pt-4">

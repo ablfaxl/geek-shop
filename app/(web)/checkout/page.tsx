@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useCart } from '@/app/(home)/cart/context/cart-provider';
+import { useCart } from '@/app/(web)/cart/context/cart-provider';
 
 export default function CheckoutPage() {
 	const { cartItems, subtotal, clearCart } = useCart();

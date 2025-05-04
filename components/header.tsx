@@ -7,7 +7,7 @@ import { LogInIcon, Menu, Search, ShoppingCart, User, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useCart } from '@/app/(home)/cart/context/cart-provider';
+import { useCart } from '@/app/(web)/cart/context/cart-provider';
 
 export function Header() {
 	const [isSearchOpen, setIsSearchOpen] = useState(false);

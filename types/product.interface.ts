@@ -10,5 +10,6 @@ export interface Product {
 	createdAt: string;
 	updatedAt: string;
 	quantity: number;
+	sizes?: string[];
+	colors?: string[];
 }
-

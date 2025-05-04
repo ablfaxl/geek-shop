@@ -1,9 +1,7 @@
 'use client';
 
 import type React from 'react';
-
-import { createContext, useContext, useState, useEffect } from 'react';
-import { toast } from 'sonner';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { Product } from '@/types/product.interface';
 
 
@@ -59,7 +57,6 @@ export default function CartProvider({
 				return [...prevItems, { ...product, quantity: 1 }];
 			}
 		});
-		toast.success('Product added to cart');
 	};
 
 	const removeFromCart = (productId: number) => {
