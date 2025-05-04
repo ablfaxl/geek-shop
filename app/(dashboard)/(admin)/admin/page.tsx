@@ -14,11 +14,11 @@ import {
 	PaginationPrevious,
 } from '@/components/ui/pagination';
 
+const PAGE_SIZE = 10;
 export default function Dashboard() {
 	const { data: session } = useSession();
 	const [users, setUsers] = useState<User[]>([]);
 	const [currentPage, setCurrentPage] = useState(1); // Current page state
-	const pageSize = 10;
 	const [totalPages, setTotalPages] = useState(1); // Total pages state
 	const [totalUsers, setTotalUsers] = useState(0); // Total users state
 	const [searchTerm, setSearchTerm] = useState(''); // Search term state
@@ -37,7 +37,7 @@ export default function Dashboard() {
 	useEffect(() => {
 		if (session?.user?.isAdmin) {
 			fetch(
-				`/api/users?page=${currentPage}&pageSize=${pageSize}&search=${debouncedSearchTerm}`
+				`/api/users?page=${currentPage}&pageSize=${PAGE_SIZE}&search=${debouncedSearchTerm}`
 			)
 				.then((res) => res.json())
 				.then((data) => {
