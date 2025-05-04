@@ -33,16 +33,16 @@ export function Header() {
 							<Link href="/products" className="text-lg font-medium">
 								All Products
 							</Link>
-							<Link href="products/men" className="text-lg font-medium">
+							<Link href="/products/men" className="text-lg font-medium">
 								Men
 							</Link>
-							<Link href="products/women" className="text-lg font-medium">
+							<Link href="/products/women" className="text-lg font-medium">
 								Women
 							</Link>
-							<Link href="/about" className="text-lg font-medium">
+							<Link href="/" className="text-lg font-medium">
 								About
 							</Link>
-							<Link href="/contact" className="text-lg font-medium">
+							<Link href="/" className="text-lg font-medium">
 								Contact
 							</Link>
 						</nav>
@@ -67,13 +67,13 @@ export function Header() {
 						All Products
 					</Link>
 					<Link
-						href="products/men"
+						href="/products/men"
 						className="font-medium transition-colors hover:text-primary"
 					>
 						Men
 					</Link>
 					<Link
-						href="products/women"
+						href="/products/women"
 						className="font-medium transition-colors hover:text-primary"
 					>
 						Women

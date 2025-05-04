@@ -24,7 +24,7 @@ export async function POST(req: Request) {
 			);
 		}
 
-		const valid = await bcrypt.compare(password, user.password);
+		const valid = await bcrypt.compare(password, user.password!);
 		if (!valid) {
 			return NextResponse.json(
 				{ error: 'Invalid credentials' },
@@ -32,13 +32,15 @@ export async function POST(req: Request) {
 			);
 		}
 
-		if (!process.env.TOKEN_SECRET) {
-			throw new Error('TOKEN_SECRET environment variable is not set');
+		if (!process.env.TOKEN_SECRET || process.env.TOKEN_SECRET.length < 32) {
+			console.error(
+				'TOKEN_SECRET must be defined and have a minimum length of 32 characters'
+			);
 		}
 
 		const token = jwt.sign(
 			{ sub: user.id, username: user.username, email: user.email },
-			process.env.TOKEN_SECRET,
+			process.env.TOKEN_SECRET!,
 			{ expiresIn: '7d' }
 		);
 
