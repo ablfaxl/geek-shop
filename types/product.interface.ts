@@ -9,4 +9,6 @@ export interface Product {
 	image?: string;
 	createdAt: string;
 	updatedAt: string;
+	quantity: number;
 }
+

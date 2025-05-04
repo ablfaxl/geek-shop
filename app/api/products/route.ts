@@ -7,26 +7,22 @@ export async function GET(request: Request) {
 	try {
 		// Check for query parameter to get all products
 		const url = new URL(request.url);
-		const showAll = url.searchParams.get('all')
-		console.log(showAll,'showAll');
+		const showAll = url.searchParams.get('all');
 
 		// Get user session
 		const session = await getServerSession(authOptions);
-
+		if (Boolean(showAll)) {
+			const publicProducts = await prisma.product.findMany({
+				where: {
+					status: 'ACTIVE',
+				},
+			});
+			console.log('publicProducts', publicProducts);
+			return NextResponse.json(publicProducts);
+		}
 		if (!session) {
-			// For public search pages, allow access to active products even without authentication
-			if (Boolean(showAll)) {
-				const publicProducts = await prisma.product.findMany({
-					where: {
-						status: 'ACTIVE', // Only show active products to the public
-					},
-				});
-				return NextResponse.json(publicProducts);
-			}
-
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 		}
-
 		const userProducts = await prisma.product.findMany({
 			where: {
 				userId: parseInt(session.user.id),

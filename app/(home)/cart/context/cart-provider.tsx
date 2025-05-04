@@ -4,16 +4,8 @@ import type React from 'react';
 
 import { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'sonner';
+import { Product } from '@/types/product.interface';
 
-type Product = {
-	id: number;
-	name: string;
-	price: number;
-	image: string;
-	category: string;
-	isNew: boolean;
-	quantity?: number;
-};
 
 type CartContextType = {
 	cartItems: Product[];
@@ -28,8 +20,8 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export default function CartProvider({
-	children,
-}: {
+																			 children,
+																		 }: {
 	children: React.ReactNode;
 }) {
 	const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -61,7 +53,7 @@ export default function CartProvider({
 				return prevItems.map((item) =>
 					item.id === product.id
 						? { ...item, quantity: (item.quantity || 1) + 1 }
-						: item
+						: item,
 				);
 			} else {
 				return [...prevItems, { ...product, quantity: 1 }];
@@ -72,7 +64,7 @@ export default function CartProvider({
 
 	const removeFromCart = (productId: number) => {
 		setCartItems((prevItems) =>
-			prevItems.filter((item) => item.id !== productId)
+			prevItems.filter((item) => item.id !== productId),
 		);
 
 		// If cart is empty after removal, clear localStorage
@@ -86,8 +78,8 @@ export default function CartProvider({
 
 		setCartItems((prevItems) =>
 			prevItems.map((item) =>
-				item.id === productId ? { ...item, quantity } : item
-			)
+				item.id === productId ? { ...item, quantity } : item,
+			),
 		);
 	};
 
@@ -98,12 +90,12 @@ export default function CartProvider({
 
 	const totalItems = cartItems.reduce(
 		(total, item) => total + (item.quantity || 1),
-		0
+		0,
 	);
 
 	const subtotal = cartItems.reduce(
 		(total, item) => total + item.price * (item.quantity || 1),
-		0
+		0,
 	);
 
 	return (

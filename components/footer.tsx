@@ -8,7 +8,7 @@ export function Footer() {
 			<div className="container px-4 py-12 mx-auto">
 				<div className="grid grid-cols-1 gap-8 md:grid-cols-4">
 					<div className="space-y-4">
-						<h3 className="text-lg font-bold">StyleHub</h3>
+						<h3 className="text-lg font-bold">Geek Shop</h3>
 						<p className="text-sm text-muted-foreground">
 							Premium clothing for every occasion. Quality materials, timeless
 							designs.
@@ -151,7 +151,7 @@ export function Footer() {
 				</div>
 				<div className="flex flex-col items-center justify-between gap-4 border-t pt-8 mt-8 md:flex-row">
 					<p className="text-xs text-muted-foreground">
-						© {new Date().getFullYear()} StyleHub. All rights reserved.
+						© {new Date().getFullYear()} Geek Shop. All rights reserved.
 					</p>
 					<div className="flex gap-4 text-xs text-muted-foreground">
 						<Link href="/privacy" className="hover:text-foreground">

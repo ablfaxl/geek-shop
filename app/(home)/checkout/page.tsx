@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useCart } from '../cart/context/cart-provider';
+import { useCart } from '@/app/(home)/cart/context/cart-provider';
 
 export default function CheckoutPage() {
 	const { cartItems, subtotal, clearCart } = useCart();
@@ -70,7 +70,7 @@ export default function CheckoutPage() {
 					</CardContent>
 					<CardFooter className="flex justify-center">
 						<Button asChild>
-							<Link href="/">Return to Home</Link>
+							<Link href="/public">Return to Home</Link>
 						</Button>
 					</CardFooter>
 				</Card>

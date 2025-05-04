@@ -1,6 +1,6 @@
 'use client';
 
-import { useCart } from '@/app/cart/context/cart-provider';
+import { useCart } from '@/app/(home)/cart/context/cart-provider';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -167,7 +167,7 @@ export default function ProductPage() {
 	return (
 		<div className="container px-4 py-12 mx-auto">
 			<div className="flex items-center gap-1 text-sm text-muted-foreground mb-8">
-				<Link href="/" className="hover:text-foreground">
+				<Link href="/public" className="hover:text-foreground">
 					Home
 				</Link>
 				<ChevronRight className="h-4 w-4" />

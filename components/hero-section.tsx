@@ -29,7 +29,7 @@ export function HeroSection() {
 								<Link href="/products">Shop Now</Link>
 							</Button>
 							<Button asChild className="hover:bg-black/50" size="lg">
-								<Link href="/products/new">New Arrivals</Link>
+								<Link href="/app/(home)/products/new">New Arrivals</Link>
 							</Button>
 						</div>
 					</div>

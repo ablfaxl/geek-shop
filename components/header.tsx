@@ -1,21 +1,23 @@
 'use client';
 
-import { useCart } from '@/app/cart/context/cart-provider';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Search, ShoppingCart, User, X } from 'lucide-react';
+import { LogInIcon, Menu, Search, ShoppingCart, User, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { useCart } from '@/app/(home)/cart/context/cart-provider';
 
 export function Header() {
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const { cartItems } = useCart();
+	const { data: session } = useSession();
 	const cartItemCount = cartItems.length;
 
 	return (
 		<header className="sticky top-0 z-50 w-full border-b bg-background">
-			<div className="container flex h-16 items-center px-4">
+			<div className="container flex h-16 items-center px-4 w-full mx-auto">
 				<Sheet>
 					<SheetTrigger asChild>
 						<Button variant="ghost" size="icon" className="md:hidden">
@@ -31,10 +33,10 @@ export function Header() {
 							<Link href="/products" className="text-lg font-medium">
 								All Products
 							</Link>
-							<Link href="/products/men" className="text-lg font-medium">
+							<Link href="products/men" className="text-lg font-medium">
 								Men
 							</Link>
-							<Link href="/products/women" className="text-lg font-medium">
+							<Link href="products/women" className="text-lg font-medium">
 								Women
 							</Link>
 							<Link href="/about" className="text-lg font-medium">
@@ -48,7 +50,7 @@ export function Header() {
 				</Sheet>
 
 				<Link href="/" className="ml-4 md:ml-0 flex items-center gap-2">
-					<span className="text-xl font-bold">StyleHub</span>
+					<span className="text-xl font-bold">Geek Shop</span>
 				</Link>
 
 				<nav className="mx-6 hidden md:flex items-center gap-6 text-sm">
@@ -65,13 +67,13 @@ export function Header() {
 						All Products
 					</Link>
 					<Link
-						href="/products/men"
+						href="products/men"
 						className="font-medium transition-colors hover:text-primary"
 					>
 						Men
 					</Link>
 					<Link
-						href="/products/women"
+						href="products/women"
 						className="font-medium transition-colors hover:text-primary"
 					>
 						Women
@@ -109,15 +111,27 @@ export function Header() {
 					)}
 
 					<Button variant="ghost" size="icon">
-						<User className="h-5 w-5" />
-						<span className="sr-only">Account</span>
+						{
+							session?.user ? (
+								<Link href="/dashboard">
+									<User className="h-5 w-5" />
+									<span className="sr-only">Profile</span>
+								</Link>
+							) : (
+								<Link href="/auth">
+									<LogInIcon className="h-5 w-5" />
+									<span className="sr-only">Login</span>
+								</Link>
+							)
+						}
 					</Button>
 
 					<Link href="/cart">
 						<Button variant="ghost" size="icon" className="relative">
 							<ShoppingCart className="h-5 w-5" />
 							{cartItemCount > 0 && (
-								<span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-primary-foreground">
+								<span
+									className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-primary-foreground">
 									{cartItemCount}
 								</span>
 							)}
