@@ -67,6 +67,15 @@ enum ProductStatus {
   LOW_STOCK
 }
 
+model Category {
+	id					Int					 @id @default(autoincrement())
+	title			 String
+	parentId		Int?
+	parent			Category?		 @relation("CategoryToCategory", fields: [parentId], references: [id])
+	children		Category[]		@relation("CategoryToCategory")
+	products		Product[]
+}
+
 model Product {
   id          Int           @id @default(autoincrement())
   name        String
