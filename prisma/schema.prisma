@@ -91,5 +91,6 @@ model Product {
 	userId			Int? // Foreign key
 	user				User?				 @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([userId])
+	@@index([userId])
+	@@index([categoryId])
 }
