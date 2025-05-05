@@ -77,18 +77,19 @@ model Category {
 }
 
 model Product {
-  id          Int           @id @default(autoincrement())
-  name        String
-  description String?
-  price       Float
-  stock       Int
-  status      ProductStatus @default(DRAFT)
-  category    String
-  image       String?
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  userId      Int? // Foreign key
-  user        User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+	id					Int					 @id @default(autoincrement())
+	name				String
+	description String?
+	price			 Float
+	stock			 Int
+	status			ProductStatus @default(DRAFT)
+	categoryId	Int
+	category		Category			@relation(fields: [categoryId], references: [id])
+	image			 String?
+	createdAt	 DateTime			@default(now())
+	updatedAt	 DateTime			@updatedAt
+	userId			Int? // Foreign key
+	user				User?				 @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
 }
