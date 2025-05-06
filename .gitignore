@@ -44,3 +44,5 @@ next-env.d.ts
 
 .ideadb-backup/
 *.sql
+db-backup/
+*.sql
