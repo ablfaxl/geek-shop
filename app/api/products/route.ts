@@ -8,28 +8,99 @@ export async function GET(request: Request) {
 		// Check for query parameter to get all products
 		const url = new URL(request.url);
 		const showAll = url.searchParams.get('all');
+		const page = parseInt(url.searchParams.get('page') || '1', 10);
+		const pageSize = parseInt(url.searchParams.get('pageSize') || '10', 10);
+		const search = url.searchParams.get('search') || '';
+
+		const skip = (page - 1) * pageSize;
+		const take = pageSize;
 
 		// Get user session
 		const session = await getServerSession(authOptions);
+
+		// Base search condition that will be used in both queries
+		const searchCondition = search
+			? {
+				OR: [
+					{ name: { contains: search, mode: 'insensitive' as const } },
+					{ description: { contains: search, mode: 'insensitive' as const } },
+				],
+			}
+			: {};
+
 		if (Boolean(showAll)) {
+			// Count total products for pagination
+			const totalProducts = await prisma.product.count({
+				where: {
+					status: 'ACTIVE',
+					...searchCondition,
+				},
+			});
+
+			// Get paginated products
 			const publicProducts = await prisma.product.findMany({
 				where: {
 					status: 'ACTIVE',
+					...searchCondition,
+				},
+				include: {
+					category: true, // Include the category relation
+				},
+				skip,
+				take,
+				orderBy: {
+					createdAt: 'desc',
 				},
 			});
-			console.log('publicProducts', publicProducts);
-			return NextResponse.json(publicProducts);
+
+			return NextResponse.json({
+				products: publicProducts,
+				pagination: {
+					total: totalProducts,
+					page,
+					pageSize,
+					pageCount: Math.ceil(totalProducts / pageSize),
+				}
+			});
 		}
+
 		if (!session) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 		}
-		const userProducts = await prisma.product.findMany({
+
+		// Count total user products for pagination
+		const totalUserProducts = await prisma.product.count({
 			where: {
 				userId: parseInt(session.user.id),
+				...searchCondition,
 			},
 		});
 
-		return NextResponse.json(userProducts);
+		// Get paginated user products
+		const userProducts = await prisma.product.findMany({
+			where: {
+				userId: parseInt(session.user.id),
+				...searchCondition,
+			},
+			include: {
+				category: true, // Include the category relation
+			},
+			skip,
+			take,
+			orderBy: {
+				createdAt: 'desc',
+			},
+		});
+
+		return NextResponse.json({
+			products: userProducts,
+			pagination: {
+				total: totalUserProducts,
+				page,
+				pageSize,
+				pageCount: Math.ceil(totalUserProducts / pageSize),
+			}
+		});
 	} catch (error) {
 		console.log(error);
 		return NextResponse.json(
@@ -38,7 +109,6 @@ export async function GET(request: Request) {
 		);
 	}
 }
-
 export async function POST(request: Request) {
 	try {
 		const session = await getServerSession(authOptions);

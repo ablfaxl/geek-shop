@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PlusCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -42,6 +42,15 @@ import {
 } from '@/components/ui/dialog';
 import { toast } from 'sonner';
 import { Product } from '@/types/product.interface';
+import {
+	Pagination,
+	PaginationContent,
+	PaginationEllipsis,
+	PaginationItem,
+	PaginationLink,
+	PaginationNext,
+	PaginationPrevious,
+} from '@/components/ui/pagination';
 
 export default function AdminProductsPage() {
 	const router = useRouter();
@@ -50,23 +59,54 @@ export default function AdminProductsPage() {
 	const [productToDelete, setProductToDelete] = useState<Product | null>(null);
 	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 	const [isDeleting, setIsDeleting] = useState(false);
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const response = await fetch('/api/products');
+	const [isLoading, setIsLoading] = useState(true);
+	const [pagination, setPagination] = useState({
+		page: 1,
+		pageSize: 10,
+		total: 0,
+		pageCount: 0,
+	});
+	const [currentPage, setCurrentPage] = useState(1);
+
+	const fetchProducts = async (search = '') => {
+		setIsLoading(true);
+		try {
+			const response = await fetch(
+				`/api/products?page=${currentPage}&pageSize=${pagination.pageSize}&search=${search}`
+			);
 			const data = await response.json();
-			setProducts(data);
-		};
+
+			setProducts(data.products);
+			setPagination({
+				...pagination,
+				page: data.pagination.page,
+				total: data.pagination.total,
+				pageCount: data.pagination.pageCount,
+			});
+		} catch (error) {
+			console.error('Error fetching products:', error);
+			toast.error('Failed to load products');
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
+
+	useEffect(() => {
 		fetchProducts();
 	}, []);
-	// Filter products based on search term
-	const filteredProducts = products?.filter(
-		(product) =>
-			product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			product.category.toLowerCase().includes(searchTerm.toLowerCase())
-	);
+
+	// Debounced search
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			fetchProducts(searchTerm);
+		}, 500);
+
+		return () => clearTimeout(timer);
+	}, [searchTerm]);
 
 	// Stats calculations
-	const totalProducts = products?.length;
+	const totalProducts = pagination.total;
 	const activeProducts = products?.filter((p) => p.status === 'ACTIVE').length;
 	const outOfStockProducts = products?.filter(
 		(p) => p.status === 'OUT_OF_STOCK' || p.stock === 0
@@ -74,6 +114,12 @@ export default function AdminProductsPage() {
 	const lowInventoryProducts = products?.filter(
 		(p) => p.status === 'LOW_STOCK' || (p.stock > 0 && p.stock <= 10)
 	).length;
+
+	const handlePageChange = (page: number) => {
+		if (page >= 1 && page <= pagination.pageCount) {
+			setCurrentPage(page);
+		}
+	};
 
 	const handleEdit = (productId: number) => {
 		router.push(`/admin/products/edit/${productId}`);
@@ -92,20 +138,17 @@ export default function AdminProductsPage() {
 		try {
 			// Call the DELETE API endpoint
 			const response = await fetch(`/api/products/${productToDelete.id}`, {
-				method: 'DELETE'
+				method: 'DELETE',
 			});
 
 			if (!response.ok) {
 				throw new Error('Failed to delete product');
 			}
 
-			// Update local state
-			if (!products) return;
-			setProducts(products.filter((p) => p.id !== productToDelete.id));
+			// Refresh products after deletion
+			fetchProducts(searchTerm);
 
-			toast.success(
-				`${productToDelete.name} has been deleted successfully.`
-			);
+			toast.success(`${productToDelete.name} has been deleted successfully.`);
 		} catch (error) {
 			console.error(error);
 			toast.error('Failed to delete product. Please try again.');
@@ -118,7 +161,29 @@ export default function AdminProductsPage() {
 
 	return (
 		<div className="flex flex-col gap-6 p-6">
-			<div className="flex items-center justify-between">
+			<div className="flex items-center justify-between mb-4">
+				<div className="relative w-full max-w-sm">
+					<Input
+						placeholder="Search products..."
+						className="pl-8"
+						value={searchTerm}
+						onChange={(e) => setSearchTerm(e.target.value)}
+					/>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth={2}
+							d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+						/>
+					</svg>
+				</div>
 				<h1 className="text-3xl font-bold">Products</h1>
 				<Button asChild>
 					<Link href="/admin/products/add">
@@ -231,8 +296,14 @@ export default function AdminProductsPage() {
 								</TableRow>
 							</TableHeader>
 							<TableBody>
-								{filteredProducts && filteredProducts?.length > 0 ? (
-									filteredProducts?.map((product) => (
+								{isLoading ? (
+									<TableRow className={'flex items-center justify-center'}>
+										<TableCell className={'text-center text-2xl'}>
+											loading...
+										</TableCell>
+									</TableRow>
+								) : products && products?.length > 0 ? (
+									products?.map((product) => (
 										<TableRow key={product.id}>
 											<TableCell>
 												<Image
@@ -248,7 +319,7 @@ export default function AdminProductsPage() {
 												{product.name}
 											</TableCell>
 											<TableCell>{product.category}</TableCell>
-											<TableCell>${product.price.toFixed(2)}</TableCell>
+											<TableCell>${product.price}</TableCell>
 											<TableCell>{product.stock}</TableCell>
 											<TableCell>
 												<Badge
@@ -313,6 +384,59 @@ export default function AdminProductsPage() {
 							</TableBody>
 						</Table>
 					</div>
+					<Pagination className="mt-4">
+						<PaginationContent>
+							<PaginationItem>
+								<PaginationPrevious
+									href="#"
+									onClick={(e) => {
+										e.preventDefault();
+										handlePageChange(pagination.page - 1);
+									}}
+								/>
+							</PaginationItem>
+
+							{[...Array(pagination.pageSize)]
+								?.slice(Math.max(0, pagination.page - 3), pagination.page + 2)
+								?.map((_, index) => (
+									<PaginationItem key={index}>
+										<PaginationLink
+											href="#"
+											onClick={(e) => {
+												e.preventDefault();
+												handlePageChange(
+													index + Math.max(0, pagination.page - 3)
+												); // Adjust the index based on the current page
+											}}
+											isActive={
+												pagination.page ===
+												index + Math.max(0, pagination.page - 3)
+											}
+										>
+											{index + Math.max(0, pagination.page - 3)}{' '}
+										</PaginationLink>
+									</PaginationItem>
+								))}
+
+							{/* Ellipsis (if needed) */}
+							{pagination.total > 5 && (
+								<PaginationItem>
+									<PaginationEllipsis />
+								</PaginationItem>
+							)}
+
+							{/* Next Button */}
+							<PaginationItem>
+								<PaginationNext
+									href="#"
+									onClick={(e) => {
+										e.preventDefault();
+										handlePageChange(pagination.page + 1);
+									}}
+								/>
+							</PaginationItem>
+						</PaginationContent>
+					</Pagination>
 				</CardContent>
 			</Card>
 
