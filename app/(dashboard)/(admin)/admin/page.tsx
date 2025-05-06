@@ -95,7 +95,7 @@ export default function Dashboard() {
 
 			<div className="rounded-lg border p-6 shadow-sm">
 				<h2 className="text-xl font-semibold mb-4">
-					User Management | Total {totalUsers.toLocaleString()}
+					User Management | Total {totalUsers?.toLocaleString()}
 				</h2>
 				<UsersTable data={users} />
 
