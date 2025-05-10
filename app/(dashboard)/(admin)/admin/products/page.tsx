@@ -155,7 +155,7 @@ export default function AdminProductsPage() {
 						<TableRow>
 							<TableHead className="w-[80px]">Image</TableHead>
 							<TableHead>Name</TableHead>
-							<TableHead>Category</TableHead>
+							{/* <TableHead>Category</TableHead> */}
 							<TableHead>Price</TableHead>
 							<TableHead>Stock</TableHead>
 							<TableHead>Status</TableHead>
@@ -183,7 +183,7 @@ export default function AdminProductsPage() {
 										/>
 									</TableCell>
 									<TableCell className="font-medium">{product.name}</TableCell>
-									<TableCell>{product.category}</TableCell>
+									{/* <TableCell>{product?.category ?? '-'}</TableCell> */}
 									<TableCell>${product.price}</TableCell>
 									<TableCell>{product.stock}</TableCell>
 									<TableCell>
