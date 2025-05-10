@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="beaea6c0-daea-4ef6-bec3-c570cdddf4b3" name="Changes" comment="remove backup&#10;">
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/(admin)/admin/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/(admin)/admin/products/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(web)/products/components/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(web)/products/components/product-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(web)/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(web)/products/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-backup/backup_2025-05-05.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EditorConfigPreviewManager">
+    <editorConfig file="$PROJECT_DIR$/.editorconfig" previewFile="$PROJECT_DIR$/app/api/login/route.ts" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1746518655" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="backup_temp" />
+                    <option name="lastUsedInstant" value="1746518397" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1746447054" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feat/user-mangment" />
+                    <option name="lastUsedInstant" value="1746372329" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/@tanstack/table-core/src/types.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/node_modules/next/dist/client/image-component.d.ts" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2wcdOW36MsbXvnS6iGiQNkcjprq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "develop",
+    "js.debugger.nextJs.config.created.client": "true",
+    "last_opened_file_path": "/Users/ablfaxl/project/crypto-app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.db:studio.executor": "Run",
+    "npm.dev.executor": "Run",
+    "npm.seed.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/Users/ablfaxl/project/crypto-app/node_modules/prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/ablfaxl/project/crypto-app/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/db-backup" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/app/(home)" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.db:studio">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="db:studio" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="db:studio" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="seed" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="seed" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.db:studio" />
+        <item itemvalue="npm.seed" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-WS-251.23774.424" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="beaea6c0-daea-4ef6-bec3-c570cdddf4b3" name="Changes" comment="" />
+      <created>1746344764685</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746344764685</updated>
+      <workItem from="1746344773104" duration="195000" />
+      <workItem from="1746344982549" duration="16813000" />
+      <workItem from="1746366191476" duration="6420000" />
+      <workItem from="1746434887103" duration="3816000" />
+      <workItem from="1746447099879" duration="540000" />
+      <workItem from="1746447652863" duration="15480000" />
+      <workItem from="1746518544164" duration="1839000" />
+    </task>
+    <task id="LOCAL-00001" summary="Standardize formatting and syntax in various files&#10;&#10;Replaced double quotes with single quotes and adjusted indentation across multiple files for consistency. Improved overall code readability while aligning with project style guidelines.">
+      <option name="closed" value="true" />
+      <created>1746354902166</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746354902166</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Standardize formatting and syntax in various files&#10;&#10;Replaced double quotes with single quotes and adjusted indentation across multiple files for consistency. Improved overall code readability while aligning with project style guidelines.">
+      <option name="closed" value="true" />
+      <created>1746354911855</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746354911855</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Refactor app structure and update product handling logic&#10;&#10;Reorganized folder structure for improved modularity and maintainability. Product data is now fetched dynamically via API instead of hardcoding it. Additionally, updated branding from &quot;StyleHub&quot; to &quot;Geek Shop&quot; across the app and enhanced session-based user interactions.">
+      <option name="closed" value="true" />
+      <created>1746363382214</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746363382214</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Refactor app structure and update product handling logic&#10;&#10;Reorganized folder structure for improved modularity and maintainability. Product data is now fetched dynamically via API instead of hardcoding it. Additionally, updated branding from &quot;StyleHub&quot; to &quot;Geek Shop&quot; across the app and enhanced session-based user interactions.">
+      <option name="closed" value="true" />
+      <created>1746363389438</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746363389438</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add product and dashboard screenshots to README&#10;&#10;Included screenshots to enhance the README visuals and provide better context for users. These images give a clearer representation of the application's interface.">
+      <option name="closed" value="true" />
+      <created>1746363871777</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746363871777</updated>
+    </task>
+    <task id="LOCAL-00006" summary="remove .idea">
+      <option name="closed" value="true" />
+      <created>1746363907108</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746363907108</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Refactor app structure by renaming &quot;(home)&quot; to &quot;(web)&quot;&#10;&#10;Standardized directory naming by changing &quot;(home)&quot; to &quot;(web)&quot; for improved clarity and organization. Updated import paths, components, and context references accordingly, while also integrating dynamic product fetching in product pages.">
+      <option name="closed" value="true" />
+      <created>1746366238124</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1746366238124</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Refactor app structure by renaming &quot;(home)&quot; to &quot;(web)&quot;&#10;&#10;Standardized directory naming by changing &quot;(home)&quot; to &quot;(web)&quot; for improved clarity and organization. Updated import paths, components, and context references accordingly, while also integrating dynamic product fetching in product pages.">
+      <option name="closed" value="true" />
+      <created>1746366726498</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746366726498</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add pagination and search to user API, update dependencies&#10;&#10;Introduced pagination and search functionality in the user API, allowing query parameters like `page`, `pageSize`, and `search` for efficient data retrieval. Updated `package.json` to configure the seed script and added dependencies (`@faker-js/faker`, `ts-node`) to enhance functionality. Adjusted the lock files to align with the updated dependencies.">
+      <option name="closed" value="true" />
+      <created>1746372251452</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1746372251452</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add pagination and search to user API, update dependencies&#10;&#10;Introduced pagination and search functionality in the user API, allowing query parameters like `page`, `pageSize`, and `search` for efficient data retrieval. Updated `package.json` to configure the seed script and added dependencies (`@faker-js/faker`, `ts-node`) to enhance functionality. Adjusted the lock files to align with the updated dependencies.">
+      <option name="closed" value="true" />
+      <created>1746372418969</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746372418969</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Remove DeadCode">
+      <option name="closed" value="true" />
+      <created>1746372512758</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746372512758</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: create Category Model">
+      <option name="closed" value="true" />
+      <created>1746447962181</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1746447962181</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: add Category Model relation">
+      <option name="closed" value="true" />
+      <created>1746447981108</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1746447981108</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: add Category Model relation">
+      <option name="closed" value="true" />
+      <created>1746447984696</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1746447984696</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Remove DeadCode">
+      <option name="closed" value="true" />
+      <created>1746510450682</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1746510450682</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Refactor product fetching and pagination logic&#10;&#10;Implemented pagination and search functionality for products across the admin and API layers. Updated front-end components for better user experience and added a new API route to fetch the top 5 products. Minor code cleanups and improvements were also included in the admin dashboard and Prisma schema.">
+      <option name="closed" value="true" />
+      <created>1746516181218</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1746516181218</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Refactor product fetching and pagination logic&#10;&#10;Implemented pagination and search functionality for products across the admin and API layers. Updated front-end components for better user experience and added a new API route to fetch the top 5 products. Minor code cleanups and improvements were also included in the admin dashboard and Prisma schema.">
+      <option name="closed" value="true" />
+      <created>1746517854171</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1746517854171</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.prisma" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Standardize formatting and syntax in various files&#10;&#10;Replaced double quotes with single quotes and adjusted indentation across multiple files for consistency. Improved overall code readability while aligning with project style guidelines." />
+    <MESSAGE value="Refactor app structure and update product handling logic&#10;&#10;Reorganized folder structure for improved modularity and maintainability. Product data is now fetched dynamically via API instead of hardcoding it. Additionally, updated branding from &quot;StyleHub&quot; to &quot;Geek Shop&quot; across the app and enhanced session-based user interactions." />
+    <MESSAGE value="Add product and dashboard screenshots to README&#10;&#10;Included screenshots to enhance the README visuals and provide better context for users. These images give a clearer representation of the application's interface." />
+    <MESSAGE value="remove .idea" />
+    <MESSAGE value="Refactor app routes to use &quot;web&quot; namespace and API-driven data&#10;&#10;Updated all routes from &quot;(home)&quot; to &quot;(web)&quot; namespace for better clarity and organization. Switched from hardcoded product data to API-driven dynamic fetching for improved scalability and maintainability." />
+    <MESSAGE value="Refactor app structure by renaming &quot;(home)&quot; to &quot;(web)&quot;&#10;&#10;Standardized directory naming by changing &quot;(home)&quot; to &quot;(web)&quot; for improved clarity and organization. Updated import paths, components, and context references accordingly, while also integrating dynamic product fetching in product pages." />
+    <MESSAGE value="Add pagination and search to user API, update dependencies&#10;&#10;Introduced pagination and search functionality in the user API, allowing query parameters like `page`, `pageSize`, and `search` for efficient data retrieval. Updated `package.json` to configure the seed script and added dependencies (`@faker-js/faker`, `ts-node`) to enhance functionality. Adjusted the lock files to align with the updated dependencies." />
+    <MESSAGE value="feat: create Category Model" />
+    <MESSAGE value="feat: add Category Model relation" />
+    <MESSAGE value="feat: add seed to product" />
+    <MESSAGE value="feat: add seed to product" />
+    <MESSAGE value="Refactor product fetching and pagination logic&#10;&#10;Implemented pagination and search functionality for products across the admin and API layers. Updated front-end components for better user experience and added a new API route to fetch the top 5 products. Minor code cleanups and improvements were also included in the admin dashboard and Prisma schema." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor product fetching and pagination logic&#10;&#10;Implemented pagination and search functionality for products across the admin and API layers. Updated front-end components for better user experience and added a new API route to fetch the top 5 products. Minor code cleanups and improvements were also included in the admin dashboard and Prisma schema." />
+  </component>
+</project>

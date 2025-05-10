@@ -32,8 +32,28 @@ export type User = {
 
 export const columns: ColumnDef<User>[] = [
 	{
+		accessorKey: 'id',
+		header: ({ column }) => (
+			<Button
+				variant="ghost"
+				onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+				className="flex items-center justify-center px-2"
+			>
+				Id
+			</Button>
+		),
+		cell: ({ row }) => (
+			<div className="flex items-center justify-start px-2">{row.id}</div>
+		),
+	},
+	{
 		accessorKey: 'username',
 		header: 'Username',
+		cell: ({ row }) => (
+			<div className="flex items-center justify-start">
+				{row.getValue('username')} {row.id}
+			</div>
+		),
 	},
 	{
 		accessorKey: 'email',
@@ -51,7 +71,7 @@ export const columns: ColumnDef<User>[] = [
 		accessorKey: 'isAdmin',
 		header: 'Admin',
 		cell: ({ row }) => (
-			<div className="flex items-center justify-center">
+			<div className="flex items-center justify-center w-10">
 				{row.getValue('isAdmin') ? (
 					<Check className="h-4 w-4 text-green-500" />
 				) : (

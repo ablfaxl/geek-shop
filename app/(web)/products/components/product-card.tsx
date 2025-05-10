@@ -40,7 +40,7 @@ function ProductCard({ product }: { product: Product }) {
 				<Link href={`/products/${product.id}`} className="hover:underline">
 					<h3 className="font-medium">{product.name}</h3>
 				</Link>
-				<p className="font-bold mt-1">${product.price.toFixed(2)}</p>
+				<p className="font-bold mt-1">${product.price}</p>
 			</CardContent>
 			<CardFooter className="p-4 pt-0">
 				<Button

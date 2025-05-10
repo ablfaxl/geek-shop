@@ -95,9 +95,9 @@ export default function Dashboard() {
 
 			<div className="rounded-lg border p-6 shadow-sm">
 				<h2 className="text-xl font-semibold mb-4">
-					User Management | Total {totalUsers.toLocaleString()}
+					User Management | Total {totalUsers?.toLocaleString()}
 				</h2>
-				<UsersTable data={users} />
+				<UsersTable data={users ?? []} />
 
 				<Pagination className="mt-4">
 					<PaginationContent>
@@ -112,8 +112,8 @@ export default function Dashboard() {
 						</PaginationItem>
 
 						{[...Array(totalPages)]
-							.slice(Math.max(0, currentPage - 3), currentPage + 2)
-							.map((_, index) => (
+							?.slice(Math.max(0, currentPage - 3), currentPage + 2)
+							?.map((_, index) => (
 								<PaginationItem key={index}>
 									<PaginationLink
 										href="#"

@@ -11,20 +11,19 @@ model User {
   id            Int       @id @default(autoincrement())
   email         String    @unique
   password      String?
-  username      String
-  isAdmin       Boolean   @default(false)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  username      String
+  isAdmin       Boolean   @default(false)
   emailVerified DateTime?
   accounts      Account[]
+  products      Product[]
   sessions      Session[]
-  products      Product[] // User's products
 }
 
-// NextAuth required models
 model Account {
   id                Int     @id @default(autoincrement())
-  userId            Int     @map("userId")
+  userId            Int
   type              String
   provider          String
   providerAccountId String
@@ -44,7 +43,7 @@ model Account {
 model Session {
   id           Int      @id @default(autoincrement())
   sessionToken String   @unique
-  userId       Int      @map("userId")
+  userId       Int
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -59,27 +58,37 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-// Add this enum above your models
-enum ProductStatus {
-  DRAFT
-  ACTIVE
-  OUT_OF_STOCK
-  LOW_STOCK
+model Category {
+  id       Int        @id @default(autoincrement())
+  title    String
+  parentId Int?
+  parent   Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryHierarchy")
+  products Product[]
 }
 
 model Product {
   id          Int           @id @default(autoincrement())
   name        String
   description String?
-  price       Float
+  price       Decimal       @db.Decimal(10, 2)
   stock       Int
   status      ProductStatus @default(DRAFT)
-  category    String
   image       String?
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
-  userId      Int? // Foreign key
+  userId      Int?
+  categoryId  Int?
+  category    Category?     @relation(fields: [categoryId], references: [id])
   user        User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+  @@index([categoryId])
+}
+
+enum ProductStatus {
+  DRAFT
+  ACTIVE
+  OUT_OF_STOCK
+  LOW_STOCK
 }
