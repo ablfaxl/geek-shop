@@ -132,6 +132,7 @@ export default function AdminProductsPage() {
 
 	return (
 		<div className="flex flex-col gap-6 p-6">
+			<h1 className="text-3xl font-bold">Products</h1>
 			<div className="flex items-center justify-between mb-4">
 				<Input
 					placeholder="Search products..."
@@ -139,7 +140,6 @@ export default function AdminProductsPage() {
 					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
 				/>
-				<h1 className="text-3xl font-bold">Products</h1>
 				<Button asChild>
 					<Link href="/admin/products/add">
 						<PlusCircle className="mr-2 h-4 w-4" />
